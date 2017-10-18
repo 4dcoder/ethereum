@@ -10,4 +10,5 @@
 ```brew install ethereum```
 - Install TestRPC (develop and test contracts):
 ```npm install -g ethereumjs-testrpc```
-- Install Truffle (framework to write and deploy contracts):
+- Install Truffle (framework to build and deploy contracts):
+```npm install -g truffle```
