@@ -1,4 +1,4 @@
-# How to set up ethereum dev environment
+# Set up ethereum dev environment
 - Install Homebrew for package management: 
 ```
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -39,3 +39,49 @@ https://code.visualstudio.com/docs/setup/mac
 
 - Install solidity extension in visual studio code
 
+# Create a genesis block
+The contents of a basic genesis block is in this repo. Create genesis.json file under a specific directory, which we will initialize to be the data directory in the next step.
+
+# Initialize a geth data dir
+Whenever you run geth, you must specify the data directory you use here
+In this repo, our data dir is `~/github.com/ethereum/private`
+```
+geth --datadir ~/github.com/ethereum/private init genesis.json
+```
+
+# Create accounts using geth
+```
+geth --datadir ~/github.com/ethereum/private account new
+```
+
+# List accounts using geth
+```
+geth --datadir ~/github.com/ethereum/private account list
+```
+
+# Create startnode.sh
+The contents of startnode.sh is in this. This is a brief description of each param:
+- networkid 4224: Provide a unique network id 
+- mine: Node will start mining automatically when started  
+- datadir "~/github.com/ethereum/private": specifies data dir 
+- nodiscover: Node will not look for other nodes initially 
+- rpc: Node will use rpc
+- rpcport "8545": The rpc port 
+- port "30303": The port on which the node will listen to other nodes 
+- rpccorsdomain "*": accept any rpc domain 
+- nat "any": accept any nat connection 
+- rpcapi eth,web3,personal,net: Use these api's or libraries in your node
+- unlock 0: unlock the first account we created
+- password ~/github.com/ethereum/private/password.sec: specify password file 
+- ipcpath "~/Library/Ethereum/geth.ipc": For Mist to connect to this later (only mac)
+ 
+
+Run the following command to make startnode.sh executable:
+```
+chmod a+x startnode.sh
+```
+
+# Run your node and start mining
+```
+./startnode.sh
+```
