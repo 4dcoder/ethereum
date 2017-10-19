@@ -117,4 +117,30 @@ https://metamask.io
 https://slack.metamask.io
 ```
 
+## Truffle
+- Create directory for Truffle project
+- Run this command to initate a Truffle project:
+```
+truffle init
+``` 
 
+- Truffle will create some directories. Clean up files under `contracts` directory, just keep `Migrations.sol`
+- Under `migrations` directory, there are deployment scripts that run according to the order specified in the prefix number. You should see the truffle generate numbers. Anyway, cleanup the code there as well to have only the `Migrations.json` stuff
+- Place your solidity contract under contracts
+- From command line, run the following command to deploy contracts to testrpc:
+```
+truffle migrate [--reset]
+```
+- From command line run this command to start truffle console:
+```
+truffle console
+```
+- From truffle console, run this JS command to get an instance of deployed contract:
+```
+Greetings.deployed().then(function(value) { app = value;});
+```
+- Now you can execute functions like getters and setters of the contract:
+```
+app.getGreetings();
+app.setGreetings("New Greeting", {from: web3.eth.accounts[0]}); // must specify who's paying
+```

@@ -1,17 +1,17 @@
 pragma solidity ^0.4.11;
 
 contract TestContract {
-     int id;
+     uint id;
 
      function TestContract() {
           id = 0;
      }
 
-     function setId(int _id) public {
+     function setId(uint _id) public {
           id = _id;
      }
 
-     function getId() constant returns (int) {
+     function getId() constant returns (uint) {
           return id;
      }
 }
