@@ -1,4 +1,4 @@
-# Set up ethereum dev environment
+## Set up ethereum dev environment
 - Install Homebrew for package management: 
 ```
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -39,27 +39,29 @@ https://code.visualstudio.com/docs/setup/mac
 
 - Install solidity extension in visual studio code
 
-# Create a genesis block
+
+## Create a genesis block
 The contents of a basic genesis block is in this repo. Create genesis.json file under a specific directory, which we will initialize to be the data directory in the next step.
 
-# Initialize a geth data dir
+
+## Initialize a geth data dir
 Whenever you run geth, you must specify the data directory you use here
 In this repo, our data dir is `~/github.com/ethereum/private`
 ```
 geth --datadir ~/github.com/ethereum/private init genesis.json
 ```
 
-# Create accounts using geth
+## Create accounts using geth
 ```
 geth --datadir ~/github.com/ethereum/private account new
 ```
 
-# List accounts using geth
+## List accounts using geth
 ```
 geth --datadir ~/github.com/ethereum/private account list
 ```
 
-# Create startnode.sh
+## Create startnode.sh
 The contents of startnode.sh is in this. This is a brief description of each param:
 - networkid 4224: Provide a unique network id 
 - mine: Node will start mining automatically when started  
@@ -81,7 +83,38 @@ Run the following command to make startnode.sh executable:
 chmod a+x startnode.sh
 ```
 
-# Run your node and start mining
+## Run your node and start mining
 ```
 ./startnode.sh
 ```
+
+## Geth commands
+- miner.start()
+- miner.stop()
+- eth.accounts
+- eth.coinbase
+- eth.getBalance(coinbase)
+- eth.sendTransaction({from:eth.coinbase, to:eth.accounts[1], value:web3.toWei(100,"ether")})
+- web3.fromWei(someWeiValue, "ether") // converts from Wei to Ether
+- web3.toWei(someWeiValue, "ether") // converts from Ether to Wei
+- Full list: https://github.com/ethereum/go-ethereum/wiki/JavaScript-Console
+
+
+## Download and Install Mist
+Mist is an ethereum UI to connect to your node
+```
+https://github.com/ethereum/mist/releases
+```
+Mist Gitter chat room: https://gitter.im/ethereum/mist
+
+
+## MetaMask Chrome Extension
+You can install the extension in your chrome and connect to a chain from there
+```
+https://metamask.io
+```
+```
+https://slack.metamask.io
+```
+
+
