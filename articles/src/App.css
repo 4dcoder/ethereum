@@ -1,5 +1,36 @@
 .App {
+  text-align: left;
+}
+
+.center {
+  margin: auto;
+  width: 75%;
+  border: 2px solid #73AD21;
+  padding: 10px;
+}
+
+.text-center {
   text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.account-balance {
+  position: relative;
+  left: 5px;
+  border: 1px solid #73AD21;
+}
+
+.coinbase-address {
+  position: absolute;
+  right: 5px;
+  border: 3px solid #73AD21;
 }
 
 .App-logo {

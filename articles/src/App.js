@@ -1,18 +1,20 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React from 'react';
+import {Button, ButtonToolbar, PageHeader} from 'react-bootstrap';
+import MainGrid from './MainGrid'
 import './App.css';
 
-class App extends Component {
+class App extends React.Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          Rawad, To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      
+      <div>
+        <PageHeader className="text-center">The Article Shop</PageHeader>
+        <br/>
+
+        <MainGrid/>
+        <br/>
+        <Button bsStyle="primary">Sell Article</Button>
+
       </div>
     );
   }
