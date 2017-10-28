@@ -1,6 +1,7 @@
 import React from 'react';
-import {Button, ButtonToolbar, PageHeader} from 'react-bootstrap';
-import MainGrid from './MainGrid'
+import {PageHeader} from 'react-bootstrap';
+import FlexExample from './FlexExample'
+import Main from './Main'
 import './App.css';
 
 class App extends React.Component {
@@ -9,11 +10,9 @@ class App extends React.Component {
       
       <div>
         <PageHeader className="text-center">The Article Shop</PageHeader>
-        <br/>
 
-        <MainGrid/>
+        <Main/>
         <br/>
-        <Button bsStyle="primary">Sell Article</Button>
 
       </div>
     );

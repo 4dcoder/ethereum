@@ -2,37 +2,6 @@
   text-align: left;
 }
 
-.center {
-  margin: auto;
-  width: 75%;
-  border: 2px solid #73AD21;
-  padding: 10px;
-}
-
-.text-center {
-  text-align: center;
-}
-
-.text-left {
-  text-align: left;
-}
-
-.text-right {
-  text-align: right;
-}
-
-.account-balance {
-  position: relative;
-  left: 5px;
-  border: 1px solid #73AD21;
-}
-
-.coinbase-address {
-  position: absolute;
-  right: 5px;
-  border: 3px solid #73AD21;
-}
-
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
@@ -57,3 +26,47 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+
+
+.container1 {
+  margin: 20px 50px;
+  display: flex;
+  justify-content: space-between;
+  background-color: tomato;
+  height: 50px;
+  line-height: 50px;
+}
+
+.container1-1 {
+  padding-left: 10px;
+  color: white;
+  background-color: #000000;
+  text-align: left;
+  flex-basis: 49%;
+}
+
+.container1-2 {
+  padding-right: 10px;
+  color: white;
+  background-color: #000000;
+  text-align: right;
+  flex-basis: 49%;
+}
+
+
+.container2 {
+  margin: 20px 50px;
+  display: flex;
+  justify-content: space-between;
+  background-color: lightgray;
+  height: 150px;
+  justify-content: flex-end;
+}
+
+.sellarticle {
+  height: 50px;
+  width: 150px;
+  margin: 10px;
+}
+
