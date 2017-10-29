@@ -2,6 +2,7 @@ import React from 'react';
 import {PageHeader} from 'react-bootstrap';
 import FlexExample from './FlexExample'
 import Main from './Main'
+import Input from './Input'
 import './App.css';
 
 class App extends React.Component {
@@ -11,7 +12,7 @@ class App extends React.Component {
       <div>
         <PageHeader className="text-center">The Article Shop</PageHeader>
 
-        <Main/>
+        <Input/>
         <br/>
 
       </div>
