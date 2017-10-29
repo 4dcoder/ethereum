@@ -1,0 +1,72 @@
+.App {
+  text-align: left;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+
+
+.container1 {
+  margin: 20px 50px;
+  display: flex;
+  justify-content: space-between;
+  background-color: tomato;
+  height: 50px;
+  line-height: 50px;
+}
+
+.container1-1 {
+  padding-left: 10px;
+  color: white;
+  background-color: #000000;
+  text-align: left;
+  flex-basis: 49%;
+}
+
+.container1-2 {
+  padding-right: 10px;
+  color: white;
+  background-color: #000000;
+  text-align: right;
+  flex-basis: 49%;
+}
+
+
+.container2 {
+  margin: 20px 50px;
+  display: flex;
+  justify-content: space-between;
+  background-color: lightgray;
+  height: 150px;
+  justify-content: flex-end;
+}
+
+.sellarticle {
+  height: 50px;
+  width: 150px;
+  margin: 10px;
+}
+
