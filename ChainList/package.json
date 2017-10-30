@@ -8,11 +8,14 @@
   },
   "dependencies": {
     "bootstrap": "^3.3.7",
+    "fs": "0.0.1-security",
     "react": "^16.0.0",
     "react-bootstrap": "0.31.3",
     "react-dom": "^16.0.0",
     "react-router": "^4.0.0-0",
     "react-scripts": "1.0.14",
+    "reactjs-bootstrap-table": "^1.0.12",
+    "truffle-contract": "^3.0.0",
     "web3": "^0.20.0",
     "yarn": "^1.2.1"
   },

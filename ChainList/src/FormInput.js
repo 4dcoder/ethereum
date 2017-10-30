@@ -10,29 +10,13 @@ class FormInput extends React.Component {
         reason: ''     
       };
     }
-  
-    handleChange(e) {
-      // this.setState( {
-      //   item: this.refs.r1.value,
-      //   reason: this.refs.r2.value
-      // });
-
-      // console.log(this.state.item);
-      // console.log(this.state.reason);
-
-      console.log(e.target.id);
-      
-
-    }
 
     handleItemChange(e) {
       this.setState({ item: e.target.value });
-     
     }
 
     handleReasonChange(e) {
-      this.setState({ reason: e.target.value });
-      
+      this.setState({ reason: e.target.value }); 
     }
   
     render() {
@@ -42,14 +26,11 @@ class FormInput extends React.Component {
           <FormGroup
               controlId="formBasicText"
           >
-          <input id="r3" type="text" onChange={this.handleChange.bind(this)}/>
           <br/>
           <ControlLabel>Item Name</ControlLabel>
           <FormControl
-              //id="t"
               type="text"
               placeholder="Enter text"
-              
               onChange={this.handleItemChange.bind(this)}
           />
           <br/>
@@ -58,7 +39,6 @@ class FormInput extends React.Component {
               type="text"
               placeholder="Enter text"
               onChange={this.handleReasonChange.bind(this)}
-              
             />
             <ControlLabel>{this.state.item}</ControlLabel>:
             <ControlLabel>{this.state.reason}</ControlLabel>

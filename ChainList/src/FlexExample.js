@@ -1,7 +1,7 @@
 import React from 'react';
 import {Grid, Row, Col} from 'react-bootstrap';
-import './App.css';
-import './flex.css';
+import './css/App.css';
+import './css/flex.css';
 
 class FlexExample extends React.Component {
   render() {

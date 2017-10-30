@@ -1,7 +1,6 @@
 import {Button, Modal} from 'react-bootstrap';
 import React from 'react';
 import FormInput from './FormInput';
-import ModalWindow from './ModalWindow';
 
 class Input extends React.Component {
 
