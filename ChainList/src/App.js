@@ -15,6 +15,12 @@ class App extends React.Component {
   web3Provider = null;
   contracts = { };
   articlesInstance = null;
+
+  columns = [
+    { name: 'name', display: 'Article Name'  },
+    { name: 'description', display: 'Description'  },
+    { name: 'price', display: 'Price'  }
+  ];
   
 
   constructor() {
@@ -124,11 +130,7 @@ class App extends React.Component {
   render() {
     
     
-    let columns = [
-     { name: 'name', display: 'Article Name'  },
-     { name: 'description', display: 'Description'  },
-     { name: 'price', display: 'Price'  }
-   ];
+    
 
     return (
       
@@ -137,10 +139,10 @@ class App extends React.Component {
 
         <div className="flex-container">
           <div className="account-balance">
-          {this.state.coinbaseBalance}
+          <h4>{this.state.coinbaseBalance}</h4>
           </div>
           <div className="account-number">
-            {this.state.coinbase}
+          <h4>{this.state.coinbase}</h4>
             </div>
         </div>
 
@@ -149,7 +151,7 @@ class App extends React.Component {
           <Input articlesInstance={this.articlesInstance} coinbase={this.state.coinbase} callback={this.reloadArticles.bind(this)}/>
         </div>
 
-        <BootstrapTable columns={columns} data={[this.state.articles]} headers={true} />
+        <BootstrapTable columns={this.columns} data={[this.state.articles]} headers={true} />
 
         <br/>
 
