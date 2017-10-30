@@ -8,7 +8,7 @@ import TruffleContract from 'truffle-contract';
 import BootstrapTable from 'reactjs-bootstrap-table';
 
 var Web3 = require('web3');
-var web3 = new Web3();
+var web3;
 
 class App extends React.Component {
 
@@ -37,11 +37,12 @@ class App extends React.Component {
       
     console.log("start");
           
-       if (typeof web3.currentProvider !== 'undefined') {
+       if (typeof web3 !== 'undefined') {
          this.web3Provider = web3.currentProvider;
          web3 = new Web3(web3.currentProvider);
-         console.log("existing web3" + web3.currentProvider);
+         console.log("existing web3: provider " + typeof web3);
       } else {
+
           this.web3Provider = new Web3.providers.HttpProvider('http://localhost:8545');
           web3 = new Web3(this.web3Provider);
           console.log("new web3");
@@ -56,6 +57,7 @@ class App extends React.Component {
 
   displayAccountInfo() {
   
+
     console.log("display accounts info");
     // make web3 call to get coinbase account
     web3.eth.getCoinbase(function(err, account) {
@@ -91,6 +93,7 @@ class App extends React.Component {
   }
 
   async reloadArticles() {
+
 
     // refresh account information because the balance may have changed
     this.displayAccountInfo();
