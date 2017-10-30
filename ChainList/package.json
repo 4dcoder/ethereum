@@ -17,13 +17,13 @@
     "react-scripts": "1.0.14",
     "reactjs-bootstrap-table": "^1.0.12",
     "truffle-contract": "^3.0.0",
-    "web3": "^1.0.0-beta.24",
+    "web3": "^0.20.0",
     "yarn": "^1.2.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "build:contract": "npm run build && truffle migrate",
+    "migrate": "truffle migrate && cp -R ./build/contracts ./src",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },

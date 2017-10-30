@@ -68,7 +68,7 @@ class App extends React.Component {
         // once we have 
         web3.eth.getBalance(account, function(err, balance) {
           if (err === null) {
-            this.setState({coinbaseBalance:web3.fromWei(balance.toNumber(), "ether")});
+            this.setState({coinbaseBalance:web3.fromWei(balance, "ether").toNumber()});
           }
         }.bind(this));
       }
@@ -77,8 +77,9 @@ class App extends React.Component {
 
   async initiateContract() {
 
-    var data = await fetch('./contracts/ChainList.json').then(res => res.json());
-  
+    //var data = await fetch('./contracts/ChainList.json').then(res => res.json());
+    var data = require('./contracts/ChainList.json');
+
     // Get the necessary contract artifact file and use it to instantiate a truffle contract abstraction.
     this.contracts.ChainList = TruffleContract(data);
     
@@ -142,7 +143,7 @@ class App extends React.Component {
 
         <div className="flex-container">
           <div className="account-balance">
-          <h4>{this.state.coinbaseBalance}</h4>
+            <h4>{this.state.coinbaseBalance}</h4>
           </div>
           <div className="account-number">
           <h4>{this.state.coinbase}</h4>
