@@ -14,13 +14,15 @@ class App extends React.Component {
 
   web3Provider = null;
   contracts = { };
+  articlesInstance = null;
   
 
   constructor() {
     super();
     this.state = {
       coinbase: null,
-      coinbaseBalance: null
+      coinbaseBalance: null,
+      articles: {}
     };
   }
 
@@ -48,6 +50,7 @@ class App extends React.Component {
 
   displayAccountInfo() {
   
+    console.log("display accounts info");
     // make web3 call to get coinbase account
     web3.eth.getCoinbase(function(err, account) {
       
@@ -73,6 +76,8 @@ class App extends React.Component {
     
     // Set the provider for our contract.
     this.contracts.ChainList.setProvider(this.web3Provider);
+
+    this.setState({contracts: this.contracts});
     
     // Retrieve the article from the smart contract
     this.reloadArticles();
@@ -84,19 +89,32 @@ class App extends React.Component {
     // refresh account information because the balance may have changed
     this.displayAccountInfo();
 
-    let instance = await this.contracts.ChainList.deployed();
-    let data = await instance.getArticle.call();
-    console.log(data);
-
-    // this.contracts.ChainList.deployed().then(function(instance) {
-    //   console.log(instance.getArticle.call());
-    // }).then(function(article) {
-      
+    this.articlesInstance = await this.contracts.ChainList.deployed();
+    let article = await this.articlesInstance.getArticle.call();
+    console.log(article);
 
 
-    // }).catch(function(err) {
-    //   console.log(err.message);
-    // });
+    if (article[0] == 0x0) {
+      console.log("no articles");
+      return;
+    } else {
+      console.log(article[0]);
+      console.log(article[1]);
+      console.log(article[2]);
+      console.log(article[3]);
+    }
+
+    let name = article[1];
+    let description = article[2];
+    let price = web3.fromWei(article[3],"ether").toNumber();
+
+    this.setState({articles: {
+                            "name": name,
+                            "description": description,
+                            "price": price
+                          }
+                        
+                  });
   }
 
   componentDidMount() {
@@ -105,14 +123,11 @@ class App extends React.Component {
 
   render() {
     
-    let data = [
-      { id: 1, firstName: '123', lastName: '...', address: '...'},
-      { id: 2, firstName: '456', lastName: '...', address: '...'}
-    ];
+    
     let columns = [
-     { name: 'firstName', display: 'First Name'  },
-     { name: 'lastName', display: 'Last Name'  },
-     { name: 'address', display: 'Address'  }
+     { name: 'name', display: 'Article Name'  },
+     { name: 'description', display: 'Description'  },
+     { name: 'price', display: 'Price'  }
    ];
 
     return (
@@ -131,10 +146,10 @@ class App extends React.Component {
 
 
         <div className="sell-button-div">
-          <Input/>
+          <Input articlesInstance={this.articlesInstance} coinbase={this.state.coinbase} callback={this.reloadArticles.bind(this)}/>
         </div>
 
-        <BootstrapTable columns={columns} data={data} headers={true} />
+        <BootstrapTable columns={columns} data={[this.state.articles]} headers={true} />
 
         <br/>
 

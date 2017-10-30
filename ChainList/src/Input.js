@@ -1,15 +1,17 @@
 import {Button, Modal} from 'react-bootstrap';
 import React from 'react';
 import FormInput from './FormInput';
+var Web3 = require('web3');
+var web3 = new Web3();
 
 class Input extends React.Component {
 
     constructor() {
-        super()
+        super();
         this.state = { showModal: false };
     }
   
-    close(e) {
+    close() {
         this.setState({ showModal: false });
     }
   
@@ -19,6 +21,16 @@ class Input extends React.Component {
 
     submit(e) {
         console.log(this.refs.formInput.state);
+        let name = this.refs.formInput.state.name;
+        let description = this.refs.formInput.state.description;
+        let price = this.refs.formInput.state.price;
+
+        let articlesInstance = this.props.articlesInstance;
+        let coinbase = this.props.coinbase;
+        articlesInstance.sellArticle(name, description, web3.toWei(price, "ether"), {from: coinbase, gas: 500000});
+        this.props.callback();
+
+        this.setState({showModal: false});
     }
   
     render() {

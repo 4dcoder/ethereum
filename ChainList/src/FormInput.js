@@ -6,17 +6,22 @@ class FormInput extends React.Component {
     constructor() {
       super();
       this.state = {
-        item: '',
-        reason: ''     
+        name: '',
+        description: '',
+        price: 0
       };
     }
 
-    handleItemChange(e) {
-      this.setState({ item: e.target.value });
+    handleNameChange(e) {
+      this.setState({ name: e.target.value });
     }
 
-    handleReasonChange(e) {
-      this.setState({ reason: e.target.value }); 
+    handleDescriptionChange(e) {
+      this.setState({ description: e.target.value }); 
+    }
+
+    handlePriceChange(e) {
+      this.setState({ price: e.target.value }); 
     }
   
     render() {
@@ -27,21 +32,26 @@ class FormInput extends React.Component {
               controlId="formBasicText"
           >
           <br/>
-          <ControlLabel>Item Name</ControlLabel>
+          <ControlLabel>Article Name</ControlLabel>
           <FormControl
               type="text"
               placeholder="Enter text"
-              onChange={this.handleItemChange.bind(this)}
+              onChange={this.handleNameChange.bind(this)}
           />
           <br/>
-          <ControlLabel>Reason</ControlLabel>
+          <ControlLabel>Description</ControlLabel>
           <FormControl
               type="text"
               placeholder="Enter text"
-              onChange={this.handleReasonChange.bind(this)}
+              onChange={this.handleDescriptionChange.bind(this)}
             />
-            <ControlLabel>{this.state.item}</ControlLabel>:
-            <ControlLabel>{this.state.reason}</ControlLabel>
+            <br/>
+          <ControlLabel>Price</ControlLabel>
+          <FormControl
+              type="text"
+              placeholder="Enter text"
+              onChange={this.handlePriceChange.bind(this)}
+            />
           </FormGroup>
 
           
