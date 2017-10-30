@@ -75,9 +75,9 @@ class App extends React.Component {
     }.bind(this));
   }
 
-  initiateContract() {
+  async initiateContract() {
 
-    var data = require('./ChainList.json');
+    var data = await fetch('./contracts/ChainList.json').then(res => res.json());
   
     // Get the necessary contract artifact file and use it to instantiate a truffle contract abstraction.
     this.contracts.ChainList = TruffleContract(data);
