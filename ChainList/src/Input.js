@@ -20,7 +20,7 @@ class Input extends React.Component {
     }
 
     submit(e) {
-        console.log(this.refs.formInput.state);
+
         let name = this.refs.formInput.state.name;
         let description = this.refs.formInput.state.description;
         let price = this.refs.formInput.state.price;

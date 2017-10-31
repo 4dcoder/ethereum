@@ -1,5 +1,5 @@
 import React from 'react';
-import {PageHeader} from 'react-bootstrap';
+import {PageHeader, Modal} from 'react-bootstrap';
 import Input from './Input'
 import './css/App.css';
 import './css/flex.css';
@@ -28,14 +28,15 @@ class App extends React.Component {
     this.state = {
       coinbase: null,
       coinbaseBalance: null,
-      articles: {}
+      articles: {},
+      showEventsModal: false,
+      events: '\n'
     };
   }
 
   
   initWeb3() {
       
-    console.log("start");
           
        if (typeof web3 !== 'undefined') {
          this.web3Provider = web3.currentProvider;
@@ -47,8 +48,6 @@ class App extends React.Component {
           web3 = new Web3(this.web3Provider);
           console.log("new web3");
         }
-       //return App.initContract();
-       console.log("done");
 
        this.displayAccountInfo();
        this.initiateContract();
@@ -58,7 +57,7 @@ class App extends React.Component {
   displayAccountInfo() {
   
 
-    console.log("display accounts info");
+ //   console.log("display accounts info");
     // make web3 call to get coinbase account
     web3.eth.getCoinbase(function(err, account) {
       
@@ -68,30 +67,55 @@ class App extends React.Component {
         // once we have 
         web3.eth.getBalance(account, function(err, balance) {
           if (err === null) {
-            this.setState({coinbaseBalance:web3.fromWei(balance, "ether").toNumber()});
+            this.setState({coinbaseBalance:web3.fromWei(balance.toNumber(), "ether")});
           }
         }.bind(this));
       }
     }.bind(this));
   }
 
-  async initiateContract() {
+  initiateContract() {
 
-    //var data = await fetch('./contracts/ChainList.json').then(res => res.json());
     var data = require('./contracts/ChainList.json');
-
+  
     // Get the necessary contract artifact file and use it to instantiate a truffle contract abstraction.
     this.contracts.ChainList = TruffleContract(data);
     
     // Set the provider for our contract.
     this.contracts.ChainList.setProvider(this.web3Provider);
 
-    this.setState({contracts: this.contracts});
+    this.listenToEvents(this.reactToEvent.bind(this));
+    //this.setState({contracts: this.contracts});
     
     // Retrieve the article from the smart contract
     this.reloadArticles();
  
   }
+
+
+  // Listen for events raised from the contract
+  async listenToEvents(callback) {
+    
+    let instance = await this.contracts.ChainList.deployed();
+
+    
+      instance.sellArticleEvent({}, {
+        fromBlock: 0,
+        toBlock: 'latest'
+      }).watch(function(error, event) {
+        
+        callback(event);
+        console.log(event.args._name + ' is for sale.\n');
+      });
+    
+  }
+
+  reactToEvent(event) {
+    this.setState({events: this.state.events + event.args._name + ' is for sale. ' + '\n'});        
+    this.setState({showEventsModal: true});
+    this.reloadArticles();
+  }
+  
 
   async reloadArticles() {
 
@@ -101,17 +125,11 @@ class App extends React.Component {
 
     this.articlesInstance = await this.contracts.ChainList.deployed();
     let article = await this.articlesInstance.getArticle.call();
-    console.log(article);
 
 
     if (article[0] == 0x0) {
       console.log("no articles");
       return;
-    } else {
-      console.log(article[0]);
-      console.log(article[1]);
-      console.log(article[2]);
-      console.log(article[3]);
     }
 
     let name = article[1];
@@ -143,7 +161,7 @@ class App extends React.Component {
 
         <div className="flex-container">
           <div className="account-balance">
-            <h4>{this.state.coinbaseBalance}</h4>
+          <h4>{this.state.coinbaseBalance}</h4>
           </div>
           <div className="account-number">
           <h4>{this.state.coinbase}</h4>
@@ -159,8 +177,22 @@ class App extends React.Component {
 
         <br/>
 
+        <Modal show={this.state.showEventsModal} onHide={this.close.bind(this)}>
+            <Modal.Header closeButton>
+              events
+            </Modal.Header>
+
+            <Modal.Body>
+                {this.state.events}
+            </Modal.Body>
+            
+        </Modal>
       </div>
     );
+  }
+
+  close(e) {
+    this.setState({showEventsModal: false});
   }
 }
 
