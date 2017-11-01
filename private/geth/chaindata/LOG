@@ -80,3 +80,23 @@
 17:01:10.073565 table@remove removed @15
 17:04:49.227320 db@close closing
 17:04:49.227653 db@close done T·337.171µs
+=============== Oct 31, 2017 (PDT) ===============
+17:56:34.069993 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+17:56:34.070233 version@stat F·[0 2] S·2MiB[0B 2MiB] Sc·[0.00 0.03]
+17:56:34.070248 db@open opening
+17:56:34.070312 journal@recovery F·1
+17:56:34.071748 journal@recovery recovering @17
+17:56:34.075649 memdb@flush created L0@21 N·1458 S·93KiB "\x00\x8b+..\xdaf\x88,v52496":"\xff\x8f>..\u007f\xd98,v53155"
+17:56:34.076808 version@stat F·[1 2] S·2MiB[93KiB 2MiB] Sc·[0.25 0.03]
+17:56:34.077922 db@janitor F·5 G·0
+17:56:34.077942 db@open done T·7.68591ms
+17:57:02.962405 table@compaction L0·1 -> L1·2 S·2MiB Q·53956
+17:57:03.055120 table@build created L1@24 N·31018 S·2MiB "\x00\nh..\xdcs\x91,v37927":"\x810\f..;\u007fH,v45248"
+17:57:03.066836 table@build created L1@25 N·5486 S·651KiB "\x812\xdb..Qu\x92,v39020":"\xff\xfc\xee..\xed4\x82,v49107"
+17:57:03.066893 version@stat F·[0 2] S·2MiB[0B 2MiB] Sc·[0.00 0.03]
+17:57:03.067342 table@compaction committed F-1 S-4KiB Ke·0 D·451 T·104.745816ms
+17:57:03.067536 table@remove removed @21
+17:57:03.067978 table@remove removed @19
+17:57:03.068212 table@remove removed @20
+17:59:04.718510 db@close closing
+17:59:04.721872 db@close done T·5.210986ms
