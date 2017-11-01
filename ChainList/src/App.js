@@ -1,5 +1,5 @@
 import React from 'react';
-import {PageHeader, Modal} from 'react-bootstrap';
+import {PageHeader, Modal, Button} from 'react-bootstrap';
 import Input from './Input'
 import './css/App.css';
 import './css/flex.css';
@@ -56,8 +56,6 @@ class App extends React.Component {
 
   displayAccountInfo() {
   
-
- //   console.log("display accounts info");
     // make web3 call to get coinbase account
     web3.eth.getCoinbase(function(err, account) {
       
@@ -112,8 +110,11 @@ class App extends React.Component {
 
   reactToEvent(event) {
     this.setState({events: this.state.events + event.args._name + ' is for sale. ' + '\n'});        
-    this.setState({showEventsModal: true});
     this.reloadArticles();
+  }
+
+  displayEvents() {
+    this.setState({showEventsModal: true});    
   }
   
 
@@ -171,6 +172,8 @@ class App extends React.Component {
 
         <div className="sell-button-div">
           <Input articlesInstance={this.articlesInstance} coinbase={this.state.coinbase} callback={this.reloadArticles.bind(this)}/>
+          <div className="flex-div"></div>
+          <Button bsStyle="primary" bsSize="large" onClick={this.displayEvents.bind(this)}>Events</Button>
         </div>
 
         <BootstrapTable columns={this.columns} data={[this.state.articles]} headers={true} />

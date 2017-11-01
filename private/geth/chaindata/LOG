@@ -43,3 +43,40 @@
 23:14:04.572442 table@remove removed @8
 23:14:04.572665 table@remove removed @5
 23:14:04.572848 table@remove removed @2
+=============== Oct 31, 2017 (PDT) ===============
+14:20:25.310427 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+14:20:25.311073 version@stat F·[0 1] S·292KiB[0B 292KiB] Sc·[0.00 0.00]
+14:20:25.311089 db@open opening
+14:20:25.311148 journal@recovery F·1
+14:20:25.312660 journal@recovery recovering @9
+14:20:25.317364 memdb@flush created L0@12 N·1538 S·79KiB "\x01\x1d\xec..w\\\xcc,v8556":"\xff\xa9\x06..\xb8\x85T,v7788"
+14:20:25.318329 version@stat F·[1 1] S·371KiB[79KiB 292KiB] Sc·[0.25 0.00]
+14:20:25.319777 db@janitor F·4 G·0
+14:20:25.319794 db@open done T·8.697941ms
+14:21:20.966783 table@compaction L0·1 -> L1·1 S·371KiB Q·9800
+14:21:20.976148 table@build created L1@15 N·5956 S·354KiB "\x00\x10z..̓<,v3125":"\xff\xd0\x18..4\x83\x13,v1287"
+14:21:20.976180 version@stat F·[0 1] S·354KiB[0B 354KiB] Sc·[0.00 0.00]
+14:21:20.977161 table@compaction committed F-1 S-17KiB Ke·0 D·514 T·10.225486ms
+14:21:20.977284 table@remove removed @12
+14:21:20.977364 table@remove removed @11
+16:40:06.064951 db@close closing
+16:40:06.066128 db@close done T·1.362836ms
+=============== Oct 31, 2017 (PDT) ===============
+17:00:41.527587 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+17:00:41.527821 version@stat F·[0 1] S·354KiB[0B 354KiB] Sc·[0.00 0.00]
+17:00:41.527837 db@open opening
+17:00:41.527895 journal@recovery F·1
+17:00:41.528570 journal@recovery recovering @13
+17:00:41.639986 memdb@flush created L0@16 N·43122 S·2MiB "\x00\nh..\xdcs\x91,v37927":"\xff\xfc\xee..\xed4\x82,v49107"
+17:00:41.641200 version@stat F·[1 1] S·3MiB[2MiB 354KiB] Sc·[0.25 0.00]
+17:00:41.642809 db@janitor F·4 G·0
+17:00:41.642826 db@open done T·114.981225ms
+17:01:09.927089 table@compaction L0·1 -> L1·1 S·3MiB Q·52406
+17:01:10.046870 table@build created L1@19 N·30678 S·2MiB "\x00\nh..\xdcs\x91,v37927":"\x8c\xb8\x12..\xbf\xb4\x9d,v27724"
+17:01:10.064858 table@build created L1@20 N·4819 S·564KiB "\x8c\xbaT..\xc8 \x1e,v21261":"\xff\xfc\xee..\xed4\x82,v49107"
+17:01:10.064913 version@stat F·[0 2] S·2MiB[0B 2MiB] Sc·[0.00 0.03]
+17:01:10.066075 table@compaction committed F~ S-420KiB Ke·0 D·13581 T·138.912518ms
+17:01:10.072937 table@remove removed @16
+17:01:10.073565 table@remove removed @15
+17:04:49.227320 db@close closing
+17:04:49.227653 db@close done T·337.171µs
