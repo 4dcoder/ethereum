@@ -222,8 +222,64 @@
       "links": {},
       "address": "0xfb0a4e5bbc481ae30826742c325ac26442cf0253",
       "updated_at": 1509494070741
+    },
+    "1509564528001": {
+      "events": {
+        "0x229ecd5f3a912d97d6c520c3ce09b3c5df244541e239b7a3c24d18c06505bcb9": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "_seller",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "_name",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "name": "_price",
+              "type": "uint256"
+            }
+          ],
+          "name": "sellArticleEvent",
+          "type": "event"
+        },
+        "0x38beb681bc0237671d2b0a9516f45454a940d09dbb12bdf89fb60ece0dc23178": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "_seller",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "_buyer",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "_name",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "name": "_price",
+              "type": "uint256"
+            }
+          ],
+          "name": "buyArticleEvent",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0xfb0a4e5bbc481ae30826742c325ac26442cf0253",
+      "updated_at": 1509565231965
     }
   },
   "schema_version": "0.0.5",
-  "updated_at": 1509497818815
+  "updated_at": 1509565231965
 }

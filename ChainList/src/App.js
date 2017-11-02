@@ -37,7 +37,8 @@ class App extends React.Component {
   
   initWeb3() {
       
-          
+      console.log("what is web3 right now: " + web3);
+
        if (typeof web3 !== 'undefined') {
          this.web3Provider = web3.currentProvider;
          web3 = new Web3(web3.currentProvider);

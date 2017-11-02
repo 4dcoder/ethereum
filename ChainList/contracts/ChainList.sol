@@ -26,10 +26,11 @@ contract ChainList {
     // get the article
     function getArticle() public constant returns (
         address _seller,
+        address _buyer,
         string _name,
         string _description,
         uint256 _price) {
-        return(seller, name, description, price);
+        return(seller, buyer, name, description, price);
     }
 
     function buyArticle() payable public {
@@ -46,7 +47,6 @@ contract ChainList {
         // verify payable amount is equal to price
         require(price == msg.value);
 
-        
         // change buyer
         buyer = msg.sender;
 
