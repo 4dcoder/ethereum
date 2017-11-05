@@ -11,19 +11,28 @@ import TruffleContract from 'truffle-contract';
 import BootstrapTable from 'reactjs-bootstrap-table';
 import React, { Component } from 'react'
 import {PageHeader, Modal, Button} from 'react-bootstrap';
-import getWeb3 from '../utils/getWeb3'
-
+import getWeb3 from '../utils/getWeb3';
+import ReactTable from 'react-table';
+import "react-table/react-table.css";
 
 class App extends Component {
 
   contracts = { };
 
+  // columns = [
+  //   { name: 'seller', display: 'Sold By'  },
+  //   { name: 'buyer', display: 'Bought By'  },
+  //   { name: 'name', display: 'Article Name'  },
+  //   { name: 'description', display: 'Description'  },
+  //   { name: 'price', display: 'Price'  }
+  // ];
+
   columns = [
-    { name: 'seller', display: 'Sold By'  },
-    { name: 'buyer', display: 'Bought By'  },
-    { name: 'name', display: 'Article Name'  },
-    { name: 'description', display: 'Description'  },
-    { name: 'price', display: 'Price'  }
+    { accessor: 'seller', Header: 'Sold By'  },
+    { accessor: 'buyer', Header: 'Bought By'  },
+    { accessor: 'name', Header: 'Article Name'  },
+    { accessor: 'description', Header: 'Description'  },
+    { accessor: 'price', Header: 'Price'  }
   ];
 
 
@@ -190,7 +199,7 @@ class App extends Component {
             <Button bsStyle="primary" bsSize="large" onClick={this.displayEvents.bind(this)}>Events</Button>
           </div>
   
-          <BootstrapTable  columns={this.columns} data={[this.state.articles]} headers={true} />
+          <ReactTable  columns={this.columns} data={[this.state.articles]} headers={true} />
   
           <br/>
   
