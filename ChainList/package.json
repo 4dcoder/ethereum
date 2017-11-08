@@ -3,6 +3,7 @@
   "author": "Rawad Rifai",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://aws-ethereum.s3-website-us-west-2.amazonaws.com",
   "devDependencies": {
     "autoprefixer": "6.5.1",
     "babel-core": "6.17.0",
